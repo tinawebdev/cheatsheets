@@ -1,0 +1,6 @@
+<% if flash.any? %>
+    <% flash.each do |name, message| %>
+      <%= content_tag :div, message %>
+    <% end %>
+  </div>
+<% end %>
