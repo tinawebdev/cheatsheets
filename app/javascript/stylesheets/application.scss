@@ -1,1 +1,18 @@
 @import "bulma";
+
+$background-color: #E7E7E7;
+
+body {
+  background-color: $background-color;
+}
+
+.content {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.fixed-footer {
+  padding: 50px;
+  flex: 1 0 auto;
+}
