@@ -1,0 +1,26 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <div class="container">
+
+    <%= render "partials/form_errors", object: @user %>
+
+    <div class="field">
+      <%= f.label :email, class: "label" %>
+      <%= f.email_field :email, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, class: "label" %>
+      <%= f.password_field :password, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "Confirm Password", class: "label" %>
+      <%= f.password_field :password_confirmation, class: "input" %>
+    </div>
+  
+    <div class="buttons">
+      <%= link_to "Cancel", :back, class: "button is-danger" %>
+      <%= f.submit "Update Account", class: "button is-success" %>
+    </div>
+  </div>
+<% end %>

@@ -49,9 +49,8 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Edit Profile
-            </a>
+            <%= link_to "My Profile", current_user, class: "navbar-item" %>
+            <%= link_to "Edit Profile", edit_user_path(current_user), class: "navbar-item" %>
             <a class="navbar-item">
               Account Settings
             </a>

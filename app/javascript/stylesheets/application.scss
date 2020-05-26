@@ -2,6 +2,7 @@
 @import '@fortawesome/fontawesome-free';
 
 $background-color: #E7E7E7;
+$notification-radius: 0px;
 
 body {
   background-color: $background-color;
@@ -11,9 +12,27 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  margin: 0 !important;
 }
 
 .fixed-footer {
   padding: 50px;
   flex: 1 0 auto;
+}
+
+.notification {
+  border-radius: $notification-radius;
+  margin: 0 !important;
+}
+
+.form-errors {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: hsl(0, 0%, 96%);
+}
+
+div.field_with_errors {
+  input, textarea, select {
+    border: 1px dotted hsl(348, 100%, 61%);
+  }
 }
