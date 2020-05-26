@@ -1,6 +1,8 @@
 <% if flash.any? %>
-    <% flash.each do |name, message| %>
-      <%= content_tag :div, message %>
-    <% end %>
+  <div class="notification is-danger">
+    <button class="delete"></button>
+      <% flash.each do |name, message| %>
+        <%= content_tag :div, message %>
+      <% end %>
   </div>
 <% end %>

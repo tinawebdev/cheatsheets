@@ -16,8 +16,10 @@
     <%= render "layouts/header" %>
 
     <div class="container content">
-      <%= render "layouts/flash" %>
-      <%= yield %>
+      <section class="section">
+        <%= render "layouts/flash" %>
+        <%= yield %>
+      </section>
     </div>
 
     <%= render "layouts/footer" %>

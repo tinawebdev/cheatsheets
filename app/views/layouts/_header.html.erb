@@ -1,10 +1,10 @@
 <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <a class="navbar-item">
-      <span class="icon">
+    <%= link_to root_path, class: "navbar-item" do %>
+      <span class="icon is-medium">
         <i class="fas fa-th-large"></i>
       </span>
-    </a>
+    <% end %>
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -14,20 +14,63 @@
 
   <div id="navbarMain" class="navbar-menu">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
+      <% if user_signed_in? %>
+        <a class="navbar-item">
+          <span class="icon is-medium icon has-text-danger">
+            <i class="fas fa-bookmark"></i>
+          </span>
+          Bookmarks
+        </a>
+
+        <a class="navbar-item">
+          <span class="icon is-medium icon has-text-danger">
+            <i class="fas fa-pen-square"></i>
+          </span>
+          My cheat sheets
+        </a>
+
+        <a class="navbar-item">
+          <span class="icon is-medium icon has-text-danger">
+            <i class="fas fa-align-justify"></i>
+          </span>
+          Feed
+        </a>
+      <% end %>
     </div>
 
     <div class="navbar-end">
+      <% if user_signed_in? %>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            <span class="icon is-large icon has-text-danger">
+              <i class="fas fa-user-circle"></i>
+            </span>
+            Profile
+          </a>
+
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              Edit Profile
+            </a>
+            <a class="navbar-item">
+              Account Settings
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              Help
+            </a>
+          </div>
+        </div>
+      <% end %>
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-danger">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
+        <% if user_signed_in? %>
+          <%= link_to "Sign out", destroy_user_session_path, class: "button is-danger",
+              method: :delete %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, class: "button is-danger" %>
+          <%= link_to "Log in", new_user_session_path, class: "button is-light" %>
+        <% end %>
         </div>
       </div>
     </div>
