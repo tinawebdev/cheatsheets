@@ -2,6 +2,8 @@
 @import '@fortawesome/fontawesome-free';
 
 $background-color: #E7E7E7;
+$background-light: hsl(0, 0%, 96%);
+$background-white: hsl(0, 0%, 100%);
 $notification-radius: 0px;
 
 body {
@@ -28,11 +30,15 @@ body {
 .form-errors {
   margin-bottom: 15px;
   padding: 15px;
-  background-color: hsl(0, 0%, 96%);
+  background-color: $background-light;
 }
 
 div.field_with_errors {
   input, textarea, select {
     border: 1px dotted hsl(348, 100%, 61%);
   }
+}
+
+.user-bio {
+  margin: 15px;
 }

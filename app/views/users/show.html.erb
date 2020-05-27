@@ -1,6 +1,36 @@
-<section class="section">
-  <div class=" has-text-centered">
-    <h1 class="title">My Profile</h1>
-    <%= @user.email %>
+<section class="hero has-background-black-ter">
+  <div class="hero-body has-text-centered">
+    <div class="container">
+      <% if @user == current_user %>
+        <h1 class="title has-text-danger">My Profile</h1>
+        <h5 class="subtitle has-text-light">
+          <%= has_name?(@user, "has-text-light") %> @<%= @user.username %>
+        </h5>
+      <% else %>
+        <h1 class="title has-text-danger">
+          <%= has_name?(@user) %> @<%= @user.username %>
+        </h1>
+      <% end %>
+
+      <small class="tag is-black">Joined <%= @user.created_at.strftime("%B %d, %Y") %></small>
+
+      <% if (@user.location.present?) %>
+        <small class="tag is-dark"><%= @user.location %></small>
+      <% end %>
+
+      <div class="columns">
+        <div class="column is-half is-offset-one-quarter">
+            <div class="container user-bio">
+              <% if @user.bio.present? %>
+                <small><%= @user.bio %></small>
+              <% else %>
+                <small>404 bio not found.</small>
+              <% end %>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
