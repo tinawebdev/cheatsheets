@@ -22,9 +22,9 @@
           Bookmarks
         </a>
 
-        <a class="navbar-item">My cheatsheets</a>
-
-        <a class="navbar-item">Feed</a>
+        <%= link_to "All cheatsheets", cheatsheets_path, class: "navbar-item" %>
+        <%= link_to "Create new", new_cheatsheet_path(@cheatsheet), class: "navbar-item" %>
+        <a class="navbar-item">My Feed</a>
       <% end %>
     </div>
 

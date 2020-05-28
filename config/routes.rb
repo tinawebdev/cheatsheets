@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "cheatsheets#index"
+  root "pages#home"
 
   resources :users
   resources :cheatsheets

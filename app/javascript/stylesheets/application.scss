@@ -10,7 +10,7 @@ body {
   background-color: $background-color;
 }
 
-.content {
+.content_min-height {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
