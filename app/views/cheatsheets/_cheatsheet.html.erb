@@ -1,11 +1,10 @@
-<h1 class="title has-text-centered"><%= cheatsheet.title %></h1>
-<div class="columns">
-  <div class="column is-half is-offset-one-quarter">
-    <%= cheatsheet.created_at.strftime("%B %d, %Y") %><br />
-    <%= cheatsheet.body %><br />
-    <%= link_to cheatsheet.user.username %><br />
-    <%= link_to "Edit", edit_cheatsheet_path(cheatsheet) %>
-    <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
-                            data:{confirm: "Are you sure?"} %>
+<div class="box">
+  <div class="media-content">
+    <div class="content">
+      <h5><strong><%= link_to cheatsheet.title, cheatsheet %></strong></h5>
+      <p><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
+      <p><small><strong>Created:</strong> <%= cheatsheet.created_at.strftime("%B %d, %Y") %><br /></small></p>
+      <p><small><strong>Last updated:</strong> <%= cheatsheet.updated_at.strftime("%B %d, %Y") %><br /></small></p>
+    </div>
   </div>
 </div>

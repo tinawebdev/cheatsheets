@@ -11,20 +11,9 @@
 
       <div class="column">
         <div class="columns is-multiline is-mobile">
-          <% @cheatsheets.map do |cheatsheet| %>
-            <div class="column is-one-quarter">
-              <div class="box">
-                <div class="media-content">
-                  <div class="content">
-                    <h5><strong><%= link_to cheatsheet.title, cheatsheet %></strong></h5>
-                    <p><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></p>
-                    <p><small><%= cheatsheet.created_at.strftime("%B %d, %Y") %><br /></small></p>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <div class="column is-one-third">
+            <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheets %>
+          </div>
         </div>
       </div>
 
