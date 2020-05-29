@@ -11,15 +11,13 @@ body {
 }
 
 .content_min-height {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  min-height: calc(100vh - 160px);
   margin: 0 !important;
 }
 
 .fixed-footer {
   padding: 50px;
-  flex: 1 0 auto;
+  height: 50px;
 }
 
 .notification {

@@ -35,11 +35,13 @@
   </div>
 </section>
 
-<section class="section">
-  <% if @user.cheatsheets.any? %>
+<%# Desktop only %>
+<% if @user.cheatsheets.any? %>
+  <section class="section is-hidden-mobile">
     <table class="table is-fullwidth table is-striped">
       <thead>
         <tr>
+          <th></th>
           <th>Title</th>
           <th>Hashtags</th>
           <th>Created at</th>
@@ -47,33 +49,54 @@
           <th></th>
         </tr>
       </thead>
-      <tfoot>
-        <tr>
-          <th>Title</th>
-          <th>Hashtags</th>
-          <th>Created at</th>
-          <th>Last updated</th>
-          <th></th>
-        </tr>
-      </tfoot>
       <tbody>
-        <tr>
-        <% @user.cheatsheets.map do |cheatsheet| %>
-          <th><%= link_to cheatsheet.title, cheatsheet %></th>
-          <td>#hashtags</td>
-          <td><%= cheatsheet.created_at.strftime("%B %d, %Y") %></td>
-          <td><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></td>
-          <% if (user_signed_in? && @user == current_user) %>
-            <td>
-              <%= link_to "Edit", edit_cheatsheet_path(cheatsheet), class: "button is-success" %>
-              <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
-                                    data:{confirm: "Are you sure?"}, class: "button is-danger" %>
-            </td>
-          <% end %>
+        <% @user.cheatsheets.each.with_index(1) do |cheatsheet, index| %>
+          <tr>
+            <th><%= index %></th>
+            <th><%= link_to cheatsheet.title, cheatsheet %></th>
+            <td>#hashtags</td>
+            <td><%= cheatsheet.created_at.strftime("%B %d, %Y") %></td>
+            <td><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></td>
+              <% if (user_signed_in? && @user == current_user) %>
+                <td>
+                  <div class="buttons">
+                    <%= link_to "Edit", edit_cheatsheet_path(cheatsheet), class: "button is-success" %>
+                    <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
+                                          data:{confirm: "Are you sure?"}, class: "button is-danger" %>
+                  </div>
+                </td>
+              <% end %>
+          </tr>
         <% end %>
-        </tr>
       </tbody>
     </table>
-  <% end %>
-</section>
+  </section>
+<% end %>
 
+<%# Mobile only %>
+<% if @user.cheatsheets.any? %>
+  <section class="section is-hidden-tablet">
+    <div class="columns is-multiline">
+        <% @user.cheatsheets.map do |cheatsheet| %>
+          <div class="column is-full-tablet">
+            <div class="box">
+              <div class="content">
+                <h4><%= link_to cheatsheet.title, cheatsheet %></h4>
+                <p><small><strong>Created at: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
+                <p><small><strong>Last updated: </strong><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></small></p>
+                <p><small>#hashtags</small></p>
+
+                <% if (user_signed_in? && @user == current_user) %>
+                  <div class="buttons">
+                    <%= link_to "Edit", edit_cheatsheet_path(cheatsheet), class: "button is-success" %>
+                    <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
+                                          data:{confirm: "Are you sure?"}, class: "button is-danger" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </section>
+<% end %>

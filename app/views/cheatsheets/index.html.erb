@@ -1,22 +1,21 @@
-<section class="section content">
+<section class="hero has-background-black-ter">
+  <div class="hero-body has-text-centered">
+    <div class="column is-half is-offset-one-quarter">
+      <h1 class="title has-text-danger">Search</h1>
+      <p class="control has-icons-left">
+        <input class="input is-danger" type="text" placeholder="Search">
+        <span class="icon is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
   <div class="container">
-    <h1 class="title has-text-centered">
-      Cheatsheets Collection
-    </h1>
-
     <div class="columns">
-      <div class="column is-3">
-        <%= render "panel" %>
-      </div>
-
-      <div class="column">
-        <div class="columns is-multiline is-mobile">
-          <div class="column is-one-third">
-            <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheets %>
-          </div>
-        </div>
-      </div>
-
+      <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheets %>
     </div>
   </div>
 </section>
