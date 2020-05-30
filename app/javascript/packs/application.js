@@ -7,3 +7,4 @@ import "@fortawesome/fontawesome-free/js/all";
 import "../stylesheets/application.scss";
 import "./navbar.js";
 import "./notification.js";
+import "./toggle.js";
