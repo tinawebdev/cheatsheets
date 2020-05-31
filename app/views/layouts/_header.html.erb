@@ -22,8 +22,8 @@
           Bookmarks
         </a>
 
-        <%= link_to "All cheatsheets", cheatsheets_path, class: "navbar-item" %>
-        <%= link_to "Create new", new_cheatsheet_path(@cheatsheet), class: "navbar-item" %>
+        <%= link_to "All cheatsheets", cheatsheets_path, class: "navbar-item #{current_class?(cheatsheets_path)}" %>
+        <%= link_to "Create new", new_cheatsheet_path(@cheatsheet), class: "navbar-item #{current_class?(new_cheatsheet_path)}" %>
         <a class="navbar-item">My Feed</a>
       <% end %>
     </div>
