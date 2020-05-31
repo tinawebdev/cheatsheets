@@ -1,16 +1,56 @@
 <section class="hero has-background-black-ter">
-  <div class="hero-body has-text-centered">
-    <div class="column is-half is-offset-one-quarter">
+  <div class="hero-body">
+
+  <%# Hidden on mobile %>
+    <%= link_to :back do %>
+      <button class="button is-dark is-small is-pulled-left is-hidden-mobile">
+        <span class="icon is-small">
+          <i class="fas fa-arrow-left"></i>
+        </span>
+        <span>Back</span>
+      </button>
+    <% end %>
+
+  <%# Hidden on mobile %>
+    <% if current_user_can_edit?(@cheatsheet) %>
+      <div class="field has-addons is-pulled-right is-hidden-mobile">
+        <p class="control">
+          <%= link_to edit_cheatsheet_path(@cheatsheet) do %>
+            <button class="button is-dark is-small">
+              <span class="icon is-small">
+                <i class="fas fa-edit"></i>
+              </span>
+              <span>Edit</span>
+            </button>
+          <% end %>
+        </p>
+        <p class="control">
+          <%= link_to cheatsheet_path(@cheatsheet),method: :delete,
+                                      data:{confirm: "Are you sure?"} do %>
+            <button class="button is-dark is-small">
+              <span class="icon is-small">
+                <i class="fas fa-trash"></i>
+              </span>
+              <span>Delete</span>
+            </button>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
+
+    <div class="column is-half is-offset-one-quarter has-text-centered">
       <h1 class="title has-text-info"><%= @cheatsheet.title %></h1>
+      <div class="description is-hidden">
+        <div class="tags is-centered">
+          <%= link_to ('Author: ' + '@' + @cheatsheet.user.username), @cheatsheet.user, class: "tag is-danger"%>
+          <small class="tag is-dark">Created: <%= @cheatsheet.created_at.strftime("%B %d, %Y") %></small>
+          <%= is_updated?(@cheatsheet) %>
+        </div>
+      </div>
     </div>
-    <div class="description is-hidden">
-      <small class="tag is-black">Updated: <%= @cheatsheet.updated_at.strftime("%B %d, %Y") %></small>
-      <small class="tag is-dark">Created: <%= @cheatsheet.created_at.strftime("%B %d, %Y") %></small>
-      <p>Author:<strong> <%= link_to ('@' + @cheatsheet.user.username), @cheatsheet.user %></strong></p>
-    </div>
-    <div id="arrow">
+    <div id="arrow" class="has-text-centered">
       <span class="icon is-large">
-        <i id="icon" class="fas fa-angle-up fa-3x"></i>
+        <i class="fas fa-angle-down fa-3x"></i>
       </span>
     </div>
   </div>

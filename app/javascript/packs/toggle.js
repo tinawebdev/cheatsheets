@@ -4,5 +4,6 @@ document.addEventListener("turbolinks:load", () => {
 
   arrow.onclick = function() {
     description.classList.toggle('is-hidden');
+    arrow.classList.toggle('rotate');
   };
 });
