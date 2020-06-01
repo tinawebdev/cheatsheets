@@ -2,13 +2,21 @@
   <div class="container">
     <%= render "partials/form_errors", object: @cheatsheet %>
 
-    <div class="field">
-      <%= f.label :title, class: "label" %>
-      <%= f.text_field :title, class: "input", autofocus: true %>
+    <div class="field is-pulled-right">
+      <%= f.radio_button(:public?, true) %>
+      <%= f.label(:public?, "Public", value: true, style: "margin-right: 10px;") %>
+
+      <%= f.radio_button(:public?, false) %>
+      <%= f.label(:public?, "Private", value: false) %>
     </div>
 
     <div class="field">
-      <%= f.text_area :body, class: "input", rows: "10", placeholder: "Enter your text here", class:"textarea" %>
+      <%= f.label :title, class: "label" %>
+      <%= f.text_field :title, class: "input" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :body, class: "input", rows: "10", placeholder: "Enter your text here", class:"textarea", autofocus: true %>
     </div>
 
     <div class="buttons">

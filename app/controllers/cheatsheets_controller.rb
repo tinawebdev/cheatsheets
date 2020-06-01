@@ -2,9 +2,10 @@ class CheatsheetsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_cheatsheet, only: [:show]
   before_action :set_current_user, only: [:edit, :update, :destroy]
+  before_action :private_cheatsheet_guard!, only: [:show]
 
   def index
-    @cheatsheets = Cheatsheet.all
+    @cheatsheets = Cheatsheet.public_cheatsheets
   end
 
   def show
@@ -50,7 +51,15 @@ class CheatsheetsController < ApplicationController
     @cheatsheet = current_user.cheatsheets.find(params[:id])
   end
 
+  def private_cheatsheet_guard!
+    if @cheatsheet.private?
+      unless (signed_in? && current_user == @cheatsheet.user)
+        redirect_to cheatsheets_url, notice: "Access denied!"
+      end
+    end
+  end
+
   def cheatsheet_params
-    params.require(:cheatsheet).permit(:title, :body)
+    params.require(:cheatsheet).permit(:title, :body, :public)
   end
 end

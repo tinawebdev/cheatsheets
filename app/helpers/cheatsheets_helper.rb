@@ -16,4 +16,12 @@ module CheatsheetsHelper
   def updated_tag_color(cheatsheet)
     cheatsheet.recently_updated ? 'is-success' : 'is-dark'
   end
+
+  def visibility(cheatsheet)
+    if cheatsheet.public
+      content_tag(:span, "Public", class: "tag")
+    else
+      content_tag(:span, "Private", class: "tag is-warning")
+    end
+  end
 end

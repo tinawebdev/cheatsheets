@@ -1,7 +1,7 @@
 <div class="column is-3">
   <div class="box">
     <div class="content">
-      <h4><%= link_to cheatsheet.title, cheatsheet %></h4>
+      <h4><%= link_to truncate(cheatsheet.title, length: 50, separator: ' '), cheatsheet %></h4>
       <p><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
       <p><small><strong>Last updated:</strong> <%= cheatsheet.updated_at.strftime("%B %d, %Y") %><br /></small></p>
     </div>
