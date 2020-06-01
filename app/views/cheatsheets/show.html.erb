@@ -43,8 +43,8 @@
       <div class="description is-hidden">
         <div class="tags is-centered">
           <%= link_to ('Author: ' + '@' + @cheatsheet.user.username), @cheatsheet.user, class: "tag is-danger"%>
-          <small class="tag is-dark">Created: <%= @cheatsheet.created_at.strftime("%B %d, %Y") %></small>
-          <%= is_updated?(@cheatsheet) %>
+          <%= created_tag(@cheatsheet) %>
+          <%= updated_tag(@cheatsheet) %>
         </div>
       </div>
     </div>
