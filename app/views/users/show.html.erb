@@ -18,19 +18,13 @@
         <small class="tag is-dark"><%= @user.location %></small>
       <% end %>
 
-      <div class="columns">
-        <div class="column is-half is-offset-one-quarter">
-            <div class="container user-bio">
-              <% if @user.bio.present? %>
-                <small><%= @user.bio %></small>
-              <% else %>
-                <small>404 bio not found.</small>
-              <% end %>
-            </div>
-          </nav>
-        </div>
+      <div class="container user-bio is-centered">
+        <% if @user.bio.present? %>
+          <small><%= @user.bio %></small>
+        <% else %>
+          <small>404 bio not found.</small>
+        <% end %>
       </div>
-
     </div>
   </div>
 </section>
@@ -38,44 +32,11 @@
 <%# Hidden on mobile %>
 <% if @user.cheatsheets.any? %>
   <section class="section is-hidden-mobile">
-    <table class="table is-fullwidth table is-striped">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Title</th>
-          <th>Hashtags</th>
-          <th>Created at</th>
-          <th>Last updated</th>
-          <th>Visibility</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @user.cheatsheets.each.with_index(1) do |cheatsheet, index| %>
-          <tr>
-            <th><%= index %></th>
-            <th><%= link_to cheatsheet.title, cheatsheet %></th>
-            <td>#hashtags</td>
-            <td><%= cheatsheet.created_at.strftime("%B %d, %Y") %></td>
-            <td><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></td>
-            <td><%= visibility(cheatsheet) %></td>
-              <% if (user_signed_in? && @user == current_user) %>
-                <td>
-                  <div class="field is-grouped">
-                    <p class="control">
-                      <%= link_to "Edit", edit_cheatsheet_path(cheatsheet), class: "button is-success is-small" %>
-                    </p>
-                    <p class="control">
-                      <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
-                                          data:{confirm: "Are you sure?"}, class: "button is-danger is-small" %>
-                    </p>
-                  </div>
-                </td>
-              <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <% if (user_signed_in? && @user == current_user) %>
+      <%= render partial: "users/user_table" %>
+    <% else %>
+      <%= render partial: "users/public_table" %>
+    <% end %>
   </section>
 <% end %>
 
@@ -85,20 +46,24 @@
     <div class="columns is-multiline">
         <% @user.cheatsheets.map do |cheatsheet| %>
           <div class="column is-full-tablet">
-            <div class="box">
-              <div class="content">
-                <h4><%= link_to cheatsheet.title, cheatsheet %></h4>
-                <p><small><strong>Created at: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
-                <p><small><strong>Last updated: </strong><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></small></p>
-                <p><small>#hashtags</small></p>
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title"><%= link_to cheatsheet.title, cheatsheet %></p>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <p><small><strong>Created at: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
+                  <p><small><strong>Last updated: </strong><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></small></p>
+                  <p><small>#hashtags</small></p>
 
-                <% if (user_signed_in? && @user == current_user) %>
-                  <div class="buttons">
-                    <%= link_to "Edit", edit_cheatsheet_path(cheatsheet), class: "button is-success" %>
-                    <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
-                                          data:{confirm: "Are you sure?"}, class: "button is-danger" %>
-                  </div>
-                <% end %>
+                  <% if (user_signed_in? && @user == current_user) %>
+                    <div class="buttons">
+                      <%= link_to "Edit", edit_cheatsheet_path(cheatsheet), class: "button is-success" %>
+                      <%= link_to "Delete", cheatsheet_path(cheatsheet),method: :delete,
+                                            data:{confirm: "Are you sure?"}, class: "button is-danger" %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

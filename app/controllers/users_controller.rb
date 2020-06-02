@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @public_cheatsheets = @user.cheatsheets.public_cheatsheets
   end
 
   def edit

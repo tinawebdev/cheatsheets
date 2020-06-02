@@ -19,9 +19,9 @@ module CheatsheetsHelper
 
   def visibility(cheatsheet)
     if cheatsheet.public
-      content_tag(:span, "Public", class: "tag")
+      content_tag(:span, "Public", class: "tag is-medium")
     else
-      content_tag(:span, "Private", class: "tag is-warning")
+      content_tag(:span, "Private", class: "tag is-warning is-medium")
     end
   end
 end
