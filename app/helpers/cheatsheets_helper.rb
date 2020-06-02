@@ -3,18 +3,14 @@ module CheatsheetsHelper
     content_tag(:span, "Created: #{cheatsheet.created_at.strftime("%B %d, %Y")}", class: "tag #{created_tag_color(cheatsheet)}")
   end
 
-  def updated_tag(cheatsheet)
-    if cheatsheet.updated_at > cheatsheet.created_at
-      content_tag(:span, "Updated: #{cheatsheet.updated_at.strftime("%B %d, %Y")}", class: "tag #{updated_tag_color(cheatsheet)}")
-    end
-  end
-
   def created_tag_color(cheatsheet)
-    cheatsheet.recently_created ? 'is-success' : 'is-dark'
+    cheatsheet.recently_created? ? 'is-info' : 'is-dark'
   end
 
-  def updated_tag_color(cheatsheet)
-    cheatsheet.recently_updated ? 'is-success' : 'is-dark'
+  def updated_tag(cheatsheet)
+    if cheatsheet.recently_updated?
+      content_tag(:span, "Updated: #{cheatsheet.updated_at.strftime("%B %d, %Y")}", class: "tag is-info")
+    end
   end
 
   def visibility(cheatsheet)
