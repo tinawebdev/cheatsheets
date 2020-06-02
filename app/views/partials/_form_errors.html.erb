@@ -1,13 +1,18 @@
 <% if object.errors.any? %>
   <div class="form-errors">
-    <h5>Your form could not be saved.</h5>
+    <strong>Your form could not be saved</strong>
     <p>
       Please correct the following
       <%= pluralize(object.errors.size, "error") %>
     </p>
     <ul>
       <% object.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li>
+        <span class="icon is-large has-text-danger">
+          <i class="fas fa-exclamation-triangle"></i>
+        </span>
+        <%= message %>
+      </li>
       <% end %>
     </ul>
   </div>
