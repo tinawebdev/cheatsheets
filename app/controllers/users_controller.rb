@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_current_user, except: [:show]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @public_cheatsheets = @user.cheatsheets.public_cheatsheets
   end
 

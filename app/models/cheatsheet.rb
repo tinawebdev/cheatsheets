@@ -1,4 +1,7 @@
 class Cheatsheet < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+  
   belongs_to :user
 
   scope :public_cheatsheets, -> { where("public = ?", true).order(updated_at: :desc) }

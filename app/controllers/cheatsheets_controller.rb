@@ -44,11 +44,11 @@ class CheatsheetsController < ApplicationController
   private
 
   def set_cheatsheet
-    @cheatsheet = Cheatsheet.find(params[:id])
+    @cheatsheet = Cheatsheet.friendly.find(params[:id])
   end
 
   def set_current_user
-    @cheatsheet = current_user.cheatsheets.find(params[:id])
+    @cheatsheet = current_user.cheatsheets.friendly.find(params[:id])
   end
 
   def private_cheatsheet_guard!

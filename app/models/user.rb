@@ -1,4 +1,6 @@
-class User < ApplicationRecord  
+class User < ApplicationRecord
+  extend FriendlyId 
+
   USERNAME_VALIDATION = /\A[\w]+\z/
 
   has_many :cheatsheets, dependent: :destroy
@@ -13,6 +15,8 @@ class User < ApplicationRecord
   validates :bio, length: { maximum: 140 }
 
   before_validation :normalize_username
+
+  friendly_id :username, use: :slugged
 
   private
 
