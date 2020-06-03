@@ -1,14 +1,15 @@
 <% if object.errors.any? %>
-  <div class="form-errors">
-    <strong>Your form could not be saved</strong>
+  <div class="form-errors notification">
+    <button class="delete is-pulled-right"></button>
+    <strong>Your form could not be saved!</strong>
     <p>
       Please correct the following
-      <%= pluralize(object.errors.size, "error") %>
+      <%= pluralize(object.errors.size, "error") %>:
     </p>
     <ul>
       <% object.errors.full_messages.each do |message| %>
       <li>
-        <span class="icon is-large has-text-danger">
+        <span class="icon is-medium has-text-danger">
           <i class="fas fa-exclamation-triangle"></i>
         </span>
         <%= message %>
