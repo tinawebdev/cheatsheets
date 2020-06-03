@@ -1,15 +1,19 @@
 module CheatsheetsHelper
   def created_tag(cheatsheet)
-    content_tag(:span, "Created: #{cheatsheet.created_at.strftime("%B %d, %Y")}", class: "tag #{created_tag_color(cheatsheet)}")
-  end
-
-  def created_tag_color(cheatsheet)
-    cheatsheet.recently_created? ? 'is-info' : 'is-dark'
+    if cheatsheet.recently_created?
+      content_tag(:span, "Created: #{distance_of_time_in_words(Time.now, cheatsheet.created_at)} ago", class: "tag is-info")
+    else
+      content_tag(:span, "Created: #{cheatsheet.created_at.strftime("%B %d, %Y")}", class: "tag is-dark")
+    end
   end
 
   def updated_tag(cheatsheet)
-    if cheatsheet.recently_updated?
-      content_tag(:span, "Updated: #{cheatsheet.updated_at.strftime("%B %d, %Y")}", class: "tag is-info")
+    if cheatsheet.updated_at > cheatsheet.created_at && !cheatsheet.recently_created?
+      if cheatsheet.recently_updated?
+        content_tag(:span, "Updated: #{distance_of_time_in_words(Time.now, cheatsheet.updated_at)} ago", class: "tag is-info")
+      else
+        content_tag(:span, "Updated: #{cheatsheet.updated_at.strftime("%B %d, %Y")}", class: "tag is-dark")
+      end
     end
   end
 
