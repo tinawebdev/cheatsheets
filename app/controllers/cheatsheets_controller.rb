@@ -60,6 +60,6 @@ class CheatsheetsController < ApplicationController
   end
 
   def cheatsheet_params
-    params.require(:cheatsheet).permit(:title, :body, :public)
+    params.require(:cheatsheet).permit(:title, :content, :public)
   end
 end

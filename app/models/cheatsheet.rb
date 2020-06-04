@@ -4,8 +4,10 @@ class Cheatsheet < ApplicationRecord
   
   belongs_to :user
 
+  has_rich_text :content
+
   validates :title, presence: true, length: { maximum: 255 }
-  validates :body, presence: true, length: { maximum: 20000 }
+  validates :content, presence: true, length: {maximum: 15000}
 
   scope :public_cheatsheets, -> { where("public = ?", true).order(updated_at: :desc) }
 
