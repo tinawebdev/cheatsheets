@@ -3,6 +3,8 @@ class Cheatsheet < ApplicationRecord
   friendly_id :title, use: :slugged
   
   belongs_to :user
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_by, through: :favorites, source: :user
 
   has_rich_text :content
 

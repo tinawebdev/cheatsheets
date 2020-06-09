@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_03_085352) do
+ActiveRecord::Schema.define(version: 2020_06_08_074514) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2020_06_03_085352) do
     t.index ["user_id"], name: "index_cheatsheets_on_user_id"
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "cheatsheet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cheatsheet_id"], name: "index_favorites_on_cheatsheet_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -85,4 +94,6 @@ ActiveRecord::Schema.define(version: 2020_06_03_085352) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cheatsheets", "users"
+  add_foreign_key "favorites", "cheatsheets"
+  add_foreign_key "favorites", "users"
 end

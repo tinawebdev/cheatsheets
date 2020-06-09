@@ -4,7 +4,9 @@ class User < ApplicationRecord
   USERNAME_VALIDATION = /\A[\w]+\z/
 
   has_many :cheatsheets, dependent: :destroy
-
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_cheatsheets, through: :favorites, source: :cheatsheet
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
