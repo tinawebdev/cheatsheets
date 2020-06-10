@@ -4,19 +4,7 @@
       <p class="card-header-title"><%= link_to truncate(cheatsheet.title, length: 50, separator: ' '), cheatsheet %></p>
     
       <div>
-        <% unless current_user.favorited_cheatsheets.exists?(id: cheatsheet.id) %>
-          <%= link_to favorites_path(cheatsheet_id: cheatsheet), method: :post, class: "navbar-item #{current_class?(favorites_path)}" do %>
-            <span class="icon is-small has-text-grey">
-              <i class="far fa-bookmark"></i>
-            </span>
-          <% end %>
-        <% else %>
-          <%= link_to favorite_path(cheatsheet), method: :delete, class: "navbar-item #{current_class?(favorites_path)}" do %>
-            <span class="icon is-small has-text-danger">
-              <i class="fas fa-bookmark"></i>
-            </span>
-          <% end %>
-        <% end %>
+        <%= render "partials/add_or_remove_favorite", cheatsheet: cheatsheet, style: "navbar-item" %>
       </div>
     </header>
     <div class="card-content">

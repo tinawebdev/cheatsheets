@@ -1,7 +1,7 @@
 <section class="hero has-background-black-ter">
   <div class="hero-body">
 
-  <%# Hidden on mobile %>
+    <%# Hidden on mobile %>
     <%= link_to :back do %>
       <button class="button is-dark is-small is-pulled-left is-hidden-mobile">
         <span class="icon is-small">
@@ -11,7 +11,10 @@
       </button>
     <% end %>
 
-  <%# Hidden on mobile %>
+    <%# Hidden on mobile %>
+    <div class="is-pulled-right is-hidden-mobile ml-2">
+      <%= render "partials/add_or_remove_favorite", cheatsheet: @cheatsheet, style: "button is-dark is-small" %>
+    </div>
     <% if current_user_can_edit?(@cheatsheet) %>
       <div class="field has-addons is-pulled-right is-hidden-mobile">
         <p class="control">
@@ -37,6 +40,7 @@
         </p>
       </div>
     <% end %>
+    
 
     <div class="column is-half is-offset-one-quarter has-text-centered">
       <h1 class="title has-text-info"><%= @cheatsheet.title %></h1>
