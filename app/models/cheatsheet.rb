@@ -11,7 +11,7 @@ class Cheatsheet < ApplicationRecord
   has_rich_text :content
 
   validates :title, presence: true, length: { maximum: 255 }
-  validates :content, presence: true, length: {maximum: 15000}
+  validates :content, presence: true, length: {maximum: 20000}
   validates :hashtags, length: { maximum: 65 }
 
   after_save :create_hashtags
