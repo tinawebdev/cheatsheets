@@ -44,6 +44,11 @@
 
     <div class="column is-half is-offset-one-quarter has-text-centered">
       <h1 class="title has-text-info"><%= @cheatsheet.title %></h1>
+      <div class="mb-2">
+        <% @cheatsheet.tags.each do |hashtag| %>
+          <%= change_hashtag_to_link(hashtag.name, style="tag is-dark") %>
+        <% end %>
+      </div>
       <div class="description is-hidden">
         <div class="tags is-centered">
           <%= link_to ('Author: ' + '@' + @cheatsheet.user.username), @cheatsheet.user, class: "tag is-danger"%>

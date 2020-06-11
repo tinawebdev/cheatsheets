@@ -3,7 +3,6 @@
     <tr>
       <th></th>
       <th>Title</th>
-      <th>Hashtags</th>
       <th>Created</th>
       <th>Updated</th>
       <th>Visibility</th>
@@ -15,7 +14,6 @@
       <tr>
         <th><%= index %></th>
         <th><%= link_to cheatsheet.title, cheatsheet %></th>
-        <td>#hashtags</td>
         <td><%= cheatsheet.created_at.strftime("%B %d, %Y") %></td>
         <td><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></td>
         <td><%= visibility(cheatsheet) %></td>

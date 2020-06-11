@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_08_074514) do
+ActiveRecord::Schema.define(version: 2020_06_10_145517) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2020_06_08_074514) do
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "public", default: true
     t.string "slug"
+    t.string "hashtags"
     t.index ["slug"], name: "index_cheatsheets_on_slug", unique: true
     t.index ["user_id"], name: "index_cheatsheets_on_user_id"
   end
@@ -74,6 +75,23 @@ ActiveRecord::Schema.define(version: 2020_06_08_074514) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "cheatsheet_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cheatsheet_id"], name: "index_taggings_on_cheatsheet_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_tags_on_slug", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -96,4 +114,6 @@ ActiveRecord::Schema.define(version: 2020_06_08_074514) do
   add_foreign_key "cheatsheets", "users"
   add_foreign_key "favorites", "cheatsheets"
   add_foreign_key "favorites", "users"
+  add_foreign_key "taggings", "cheatsheets"
+  add_foreign_key "taggings", "tags"
 end

@@ -1,0 +1,13 @@
+<section class="hero has-background-black-ter">
+  <div class="hero-body has-text-centered">
+    <div class="column is-half is-offset-one-quarter">
+      <h1 class="title has-text-danger"><%= @tag.name %></h1>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="columns is-multiline">
+    <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheets %>
+  </div>
+</section>

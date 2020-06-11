@@ -9,11 +9,14 @@
     </header>
     <div class="card-content">
       <div class="content">
-        <p><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
+        <p class="my-0"><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
+        <p><small><strong>Created: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
+
         <div>
-          <p><small><strong>Created: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
+          <% cheatsheet.tags.map do |tag| %>
+            <%= change_hashtag_to_link(tag.name, style="tag") %>
+          <% end %>
         </div>
-        <p><small>#hashtags</small></p>
       </div>
     </div>
   </div>

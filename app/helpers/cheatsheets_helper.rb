@@ -24,4 +24,11 @@ module CheatsheetsHelper
       content_tag(:span, "Private", class: "tag is-warning is-medium")
     end
   end
+ 
+  def change_hashtag_to_link(hashtag, style)
+    tag = Tag.find_by(name: hashtag.downcase)
+    hashtag.gsub!(hashtag, link_to(hashtag, tag_path(tag), class: style))
+
+    hashtag.html_safe
+  end
 end

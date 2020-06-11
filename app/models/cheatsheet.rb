@@ -5,11 +5,17 @@ class Cheatsheet < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :favorited_by, through: :favorites, source: :user
+  has_many :taggings, dependent: :destroy
+  has_many :tags, through: :taggings
 
   has_rich_text :content
 
   validates :title, presence: true, length: { maximum: 255 }
   validates :content, presence: true, length: {maximum: 15000}
+  validates :hashtags, length: { maximum: 65 }
+
+  after_save :create_hashtags
+  after_commit :destroy_unused_hashtags, on: [:update, :destroy]
 
   scope :public_cheatsheets, -> { where("public = ?", true).order(updated_at: :desc) }
 
@@ -23,5 +29,18 @@ class Cheatsheet < ApplicationRecord
 
   def private?
     public == false
+  end
+
+  private
+
+  def create_hashtags
+    self.tags =
+      hashtags.downcase.scan(Tag::REGEX).uniq.map do |tag|
+        Tag.find_or_create_by(name: tag)
+    end
+  end
+
+  def destroy_unused_hashtags
+    Tag.includes(:cheatsheets).where(cheatsheets: {id: nil}).destroy_all
   end
 end

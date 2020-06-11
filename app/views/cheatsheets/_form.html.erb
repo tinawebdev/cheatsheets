@@ -16,6 +16,11 @@
     </div>
 
     <div class="field">
+      <%= f.label :hashtags, class: "label" %>
+      <%= f.text_field :hashtags, class: "input", placeholder: "#enter #hashtags #here" %>
+    </div>
+
+    <div class="field">
       <%= f.rich_text_area :content, class: "has-background-white" %>
     </div>
 

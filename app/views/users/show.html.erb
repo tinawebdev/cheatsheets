@@ -54,7 +54,6 @@
                 <div class="content">
                   <p><small><strong>Created at: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
                   <p><small><strong>Last updated: </strong><%= cheatsheet.updated_at.strftime("%B %d, %Y") %></small></p>
-                  <p><small>#hashtags</small></p>
 
                   <% if (user_signed_in? && @user == current_user) %>
                     <div class="buttons">
