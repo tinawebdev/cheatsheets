@@ -1,6 +1,8 @@
 <section class="hero has-background-black-ter">
   <div class="hero-body has-text-centered">
     <div class="container">
+      <%= gravatar_for(@user) %>
+      
       <% if @user == current_user %>
         <h1 class="title has-text-danger">My Profile</h1>
         <h5 class="subtitle has-text-light">

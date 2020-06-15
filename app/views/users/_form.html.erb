@@ -2,6 +2,11 @@
   <div class="container">
     <%= render "partials/form_errors", object: @user %>
 
+    <div class="has-text-centered">
+      <%= gravatar_for(@user) %><br>
+      <%= link_to "Update Gravatar image", "https://www.gravatar.com/", target: "_blank" %>
+    </div>
+
     <div class="field">
       <%= f.label :name, class: "label" %>
       <%= f.text_field :name, class: "input", autofocus: true, autocomplete: "name" %>
