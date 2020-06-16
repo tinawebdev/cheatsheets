@@ -7,6 +7,8 @@ class Cheatsheet < ApplicationRecord
   has_many :favorited_by, through: :favorites, source: :user
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
+  has_many :likes, dependent: :destroy
+  has_many :likers, through: :likes, source: :user
 
   has_rich_text :content
 

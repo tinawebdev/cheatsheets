@@ -1,34 +1,31 @@
 <section class="hero has-background-black-ter">
-  <div class="hero-body">
-
-    <%# Hidden on mobile %>
-    <%= link_to :back do %>
-      <button class="button is-dark is-small is-pulled-left is-hidden-mobile">
-        <span class="icon is-small">
-          <i class="fas fa-arrow-left"></i>
-        </span>
-        <span>Back</span>
-      </button>
-    <% end %>
-
-    <%# Hidden on mobile %>
-    <div class="is-pulled-right is-hidden-mobile ml-2">
-      <%= render "partials/add_or_remove_favorite", cheatsheet: @cheatsheet, style: "button is-dark is-small" %>
+  <div class="mt-4">
+    <div class="buttons is-pulled-left ml-2">
+      <%= link_to :back do %>
+        <button class="button is-dark is-small mr-2">
+          <span class="icon is-small">
+            <i class="fas fa-arrow-left"></i>
+          </span>
+          <span>Back</span>
+        </button>
+      <% end %>
     </div>
-    <% if current_user_can_edit?(@cheatsheet) %>
-      <div class="field has-addons is-pulled-right is-hidden-mobile">
-        <p class="control">
+    <div class="buttons is-pulled-right mr-2">
+      <% if current_user %>
+        <%= like_or_unlike_button(@cheatsheet, @like) %>
+
+        <%= render "partials/add_or_remove_favorite", cheatsheet: @cheatsheet, style: "button is-dark is-small" %>
+        
+        <% if current_user_can_edit?(@cheatsheet) %>
           <%= link_to edit_cheatsheet_path(@cheatsheet) do %>
-            <button class="button is-dark is-small">
+            <button class="button is-dark is-small mr-2">
               <span class="icon is-small">
                 <i class="fas fa-edit"></i>
               </span>
               <span>Edit</span>
             </button>
           <% end %>
-        </p>
-        <p class="control">
-          <%= link_to cheatsheet_path(@cheatsheet),method: :delete,
+          <%= link_to cheatsheet_path(@cheatsheet), method: :delete,
                                       data:{confirm: "Are you sure?"} do %>
             <button class="button is-dark is-small">
               <span class="icon is-small">
@@ -37,11 +34,12 @@
               <span>Delete</span>
             </button>
           <% end %>
-        </p>
-      </div>
-    <% end %>
-    
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
+  <div class="hero-body">
     <div class="column is-half is-offset-one-quarter has-text-centered">
       <h1 class="title has-text-info"><%= @cheatsheet.title %></h1>
       <div class="mb-2">

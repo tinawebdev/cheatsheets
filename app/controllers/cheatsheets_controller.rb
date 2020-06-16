@@ -9,6 +9,9 @@ class CheatsheetsController < ApplicationController
   end
 
   def show
+    if current_user
+      @like = current_user.likes.find_by(cheatsheet_id: @cheatsheet.id)
+    end
   end
 
   def new
