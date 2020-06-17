@@ -1,11 +1,11 @@
 <div class="column is-3">
   <div class="card">
-    <header class="card-header">
+    <div class="buttons is-pulled-right">
+      <%= likes_count(cheatsheet) %>
+      <%= add_or_remove_favorite(cheatsheet, styles: "pt-1 px-1") %>
+    </div>
+    <header class="has-background-white-ter">
       <p class="card-header-title"><%= link_to truncate(cheatsheet.title, length: 50, separator: ' '), cheatsheet %></p>
-    
-      <div>
-        <%= render "partials/add_or_remove_favorite", cheatsheet: cheatsheet, style: "navbar-item" %>
-      </div>
     </header>
     <div class="card-content">
       <div class="content">

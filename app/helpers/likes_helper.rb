@@ -4,11 +4,11 @@ module LikesHelper
     icon_heart_empty = content_tag(:i, '', class: "far fa-heart")
 
     if like
-      button_to cheatsheet_like_path(cheatsheet, like), method: :delete, class: styles do
+      link_to cheatsheet_like_path(cheatsheet, like), method: :delete, class: styles do
         content_tag(:span, icon_heart_filled, class: "icon has-text-danger")
       end
     else
-      button_to cheatsheet_likes_path(cheatsheet), method: :post, class: styles do
+      link_to cheatsheet_likes_path(cheatsheet), method: :post, class: styles do
         content_tag(:span, icon_heart_empty, class: "icon has-text-grey")
       end
     end

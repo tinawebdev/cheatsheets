@@ -13,8 +13,7 @@
     <div class="buttons is-pulled-right mr-2">
       <% if current_user %>
         <%= like_or_unlike_button(@cheatsheet, @like) %>
-
-        <%= render "partials/add_or_remove_favorite", cheatsheet: @cheatsheet, style: "button is-dark is-small" %>
+        <%= add_or_remove_favorite(@cheatsheet, styles: "button is-dark is-small") %>
         
         <% if current_user_can_edit?(@cheatsheet) %>
           <%= link_to edit_cheatsheet_path(@cheatsheet) do %>
