@@ -34,17 +34,15 @@ module CheatsheetsHelper
 
   def likes_count(cheatsheet)
     likes_count = cheatsheet.likers.count
-    counter = content_tag(:span, likes_count, class: "mr-1")
+    counter = content_tag(:span, likes_count, class: "has-text-grey mr-2")
 
     icon_heart_filled = content_tag(:i, '', class: "fas fa-heart")
     icon_heart_empty = content_tag(:i, '', class: "far fa-heart")
 
     if current_user && current_user.liked_cheatsheets.exists?(cheatsheet.id)
       content_tag(:span, icon_heart_filled, class: "icon has-text-danger") + counter
-    elsif likes_count > 0
-      content_tag(:span, icon_heart_empty, class: "icon has-text-grey") + counter
     else
-      content_tag(:span, icon_heart_empty, class: "icon has-text-grey mr-1")
+      content_tag(:span, icon_heart_empty, class: "icon has-text-grey") + counter
     end
   end
 end

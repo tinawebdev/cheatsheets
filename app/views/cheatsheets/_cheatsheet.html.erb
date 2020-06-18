@@ -1,13 +1,15 @@
 <div class="column is-3">
   <div class="card">
-    <div class="buttons is-pulled-right">
-      <%= likes_count(cheatsheet) %>
-      <%= add_or_remove_favorite(cheatsheet, styles: "pt-1 px-1") %>
+    <div class="has-background-white-ter is-clearfix pt-1 pb-3">
+      <div class="buttons is-pulled-right">
+        <%= likes_count(cheatsheet) %>
+        <%= add_or_remove_favorite(cheatsheet, styles: "pt-1 px-2") %>
+      </div>
     </div>
-    <header class="has-background-white-ter">
+    <header>
       <p class="card-header-title"><%= link_to truncate(cheatsheet.title, length: 50, separator: ' '), cheatsheet %></p>
     </header>
-    <div class="card-content">
+    <div class="card-content pt-0">
       <div class="content">
         <p class="my-0"><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
         <p><small><strong>Created: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
