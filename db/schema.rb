@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_080526) do
+ActiveRecord::Schema.define(version: 2020_06_19_062202) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,15 @@ ActiveRecord::Schema.define(version: 2020_06_16_080526) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["tag_id"], name: "index_subscriptions_on_tag_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "cheatsheet_id", null: false
@@ -125,6 +134,8 @@ ActiveRecord::Schema.define(version: 2020_06_16_080526) do
   add_foreign_key "favorites", "users"
   add_foreign_key "likes", "cheatsheets"
   add_foreign_key "likes", "users"
+  add_foreign_key "subscriptions", "tags"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "taggings", "cheatsheets"
   add_foreign_key "taggings", "tags"
 end

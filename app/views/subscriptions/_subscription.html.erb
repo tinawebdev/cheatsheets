@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <% unless current_user.subscribed_tags.include? @tag %>
+    <%= link_to "Subscribe", tag_subscriptions_path(@tag), method: :post, class: "button is-dark is-small" %>
+  <% else %>
+    <%= link_to "Unsubscribe", tag_subscription_path(@tag), method: :delete, data:{confirm: "Are you sure?"}, class: "button is-dark is-small" %>
+    <% end %>
+<% end %>

@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :favorited_cheatsheets, through: :favorites, source: :cheatsheet
   has_many :likes, dependent: :destroy
   has_many :liked_cheatsheets, through: :likes, source: :cheatsheet
+  has_many :subscriptions, dependent: :destroy
+  has_many :subscribed_tags, through: :subscriptions, source: :tag
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
