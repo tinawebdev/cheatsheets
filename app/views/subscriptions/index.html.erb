@@ -1,0 +1,20 @@
+<section class="hero has-background-black-ter">
+  <div class="hero-body has-text-centered">
+    <div class="column is-half is-offset-one-quarter">
+      <h1 class="title has-text-danger">My feed</h1>
+       <div class="mb-2">
+        <% @subscriptions.each do |hashtag| %>
+          <%= change_hashtag_to_link(hashtag.name, style="tag is-dark") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="columns is-multiline">
+    <% @subscriptions.each do |tag| %>
+      <%= render partial: 'cheatsheets/cheatsheet', collection: tag.cheatsheets %>
+    <% end %>
+  </div>
+</section>

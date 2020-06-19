@@ -1,14 +1,7 @@
 <section class="hero has-background-black-ter">
   <div class="mt-4">
     <div class="buttons is-pulled-left ml-2">
-      <%= link_to :back do %>
-        <button class="button is-dark is-small mr-2">
-          <span class="icon is-small">
-            <i class="fas fa-arrow-left"></i>
-          </span>
-          <span>Back</span>
-        </button>
-      <% end %>
+      <%= render partial: "partials/button_back" %>
     </div>
     <div class="buttons is-pulled-right mr-2">
       <% if current_user %>

@@ -2,6 +2,10 @@ class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tag, only: [:create, :destroy]
 
+  def index
+    @subscriptions = current_user.subscribed_tags
+  end
+
   def create
     @subscription = @tag.subscriptions.where(user_id: current_user.id).first_or_create
 

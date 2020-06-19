@@ -26,7 +26,7 @@
 
         <%= link_to "All cheatsheets", cheatsheets_path, class: "navbar-item #{current_class?(cheatsheets_path)}" %>
         <%= link_to "Create new", new_cheatsheet_path, class: "navbar-item #{current_class?(new_cheatsheet_path)}" %>
-        <a class="navbar-item">My Feed</a>
+        <%= link_to "My feed", feed_path, class: "navbar-item #{current_class?(feed_path)}" %>
       <% end %>
     </div>
 

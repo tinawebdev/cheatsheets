@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :tags, only: [:show] do
     resources :subscriptions, only: [:create, :destroy]
   end
+
+  get "feed" => "subscriptions#index"
 end
