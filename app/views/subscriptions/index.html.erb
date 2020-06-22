@@ -13,8 +13,6 @@
 
 <section class="section">
   <div class="columns is-multiline is-centered">
-    <% @subscriptions.each do |tag| %>
-      <%= render partial: 'cheatsheets/cheatsheet', collection: tag.cheatsheets %>
-    <% end %>
+    <%= render partial: 'cheatsheets/cheatsheet', collection: user_feed %>
   </div>
 </section>
