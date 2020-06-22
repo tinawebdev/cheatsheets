@@ -31,6 +31,18 @@
   </div>
 </section>
 
+<% unless @user.cheatsheets.any? %>
+  <section class="section">
+    <div class="has-text-centered py-5">
+      <h1 class="title has-text-grey-light">No Cheatsheets Yet</h1>
+      <p><%= link_to "All cheatsheets", cheatsheets_path %></p>
+      <% if @user == current_user %>
+        <p><%= link_to "Create a new cheatsheet", new_cheatsheet_path %></p>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
 <%# Hidden on mobile %>
 <% if @user.cheatsheets.any? %>
   <section class="section is-hidden-mobile">

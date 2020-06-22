@@ -7,7 +7,7 @@
 </section>
 
 <section class="section">
-  <div class="columns is-multiline">
+  <div class="columns is-multiline is-centered">
     <% if current_user.favorited_cheatsheets.any? %>
       <%= render partial: 'cheatsheets/cheatsheet', collection: current_user.favorited_cheatsheets %>
     <% end %>

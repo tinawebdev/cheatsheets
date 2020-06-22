@@ -3,6 +3,10 @@ class SubscriptionsController < ApplicationController
   before_action :set_tag, only: [:create, :destroy]
 
   def index
+    unless current_user.subscribed_tags.any?
+      redirect_to cheatsheets_url, notice: "You have no subscriptions"
+    end
+
     @subscriptions = current_user.subscribed_tags
   end
 

@@ -1,10 +1,15 @@
-<section class="section content content_min-height has-background-black-ter is-large">
+<section class="section content content_min-height has-background-black-ter is-medium">
   <div class="container has-text-centered">
-    <h1 class="title">
-      Title
+    <h1 class="title has-text-danger is-size-1">
+      Cheatsheets
     </h1>
-    <h2 class="subtitle">
-      Subtitle
-    </h2>
+    <p class="subtitle has-text-grey has-text-weight-bold is-size-5">
+      Collection of cheatsheets for your frontend development needs & reference
+    </p>
+  </div>
+  <div class="column is-three-fifths is-offset-one-fifth mt-4 has-text-centered">
+    <% @tags.each do |hashtag| %>
+      <%= change_hashtag_to_link(hashtag.name, style="tag is-dark") %>
+    <% end %>
   </div>
 </section>
