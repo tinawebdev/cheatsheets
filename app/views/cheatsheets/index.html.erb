@@ -2,18 +2,25 @@
   <div class="hero-body has-text-centered">
     <div class="column is-half is-offset-one-quarter">
       <h1 class="title has-text-danger">Search</h1>
-      <p class="control has-icons-left">
-        <input class="input is-danger" type="text" placeholder="Search">
-        <span class="icon is-left">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </span>
-      </p>
+      <%= search_form_for @q do |f| %>
+        <p class="control has-icons-left">
+          <%= f.search_field :title_or_hashtags_cont, class:"input is-danger", type:"text", placeholder:"Search" %>
+          <span class="icon is-left">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </span>
+        </p>
+      <% end %>
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="columns is-multiline is-centered">
-    <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheets %>
+    <% if @cheatsheet_results.empty? %>
+      <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheets %>
+    <% end %>
+    <% if @cheatsheet_results.exists? %>
+      <%= render partial: 'cheatsheets/cheatsheet', collection: @cheatsheet_results %>
+    <% end %>
   </div>
 </section>

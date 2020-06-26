@@ -6,6 +6,8 @@ class CheatsheetsController < ApplicationController
 
   def index
     @cheatsheets = Cheatsheet.public_cheatsheets
+    @q = Cheatsheet.public_cheatsheets.ransack(params[:q])
+    @cheatsheet_results = @q.result
   end
 
   def show
