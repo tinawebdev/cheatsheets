@@ -4,12 +4,14 @@
       Cheatsheets
     </h1>
     <p class="subtitle has-text-grey has-text-weight-bold is-size-5">
-      Collection of cheatsheets for your frontend development needs & reference
+      Collection of cheatsheets for your web development needs & reference
     </p>
   </div>
   <div class="column is-three-fifths is-offset-one-fifth mt-4 has-text-centered">
-    <% @tags.each do |hashtag| %>
-      <%= change_hashtag_to_link(hashtag.name, style="tag is-dark") %>
+    <% @tags.map do |hashtag| %>
+      <% if is_main_tag?(hashtag) %>
+        <%= change_hashtag_to_link(hashtag.name, style="tag is-dark is-medium mb-2") %>
+      <% end %>
     <% end %>
   </div>
 </section>

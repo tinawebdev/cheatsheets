@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @tags = Tag.all
+    @tags = Tag.sorted
   end
 end
