@@ -4,7 +4,7 @@
       <h1 class="title has-text-danger">My feed</h1>
        <div class="mb-2">
         <% @subscriptions.each do |hashtag| %>
-          <%= change_hashtag_to_link(hashtag.name, style="tag is-dark") %>
+          <%= change_hashtag_to_link(hashtag.name, style="tag is-dark mb-1") %>
         <% end %>
       </div>
     </div>
