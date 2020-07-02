@@ -1,25 +1,24 @@
-<div class="column is-3">
-  <div class="card">
-    <div class="has-background-white-ter is-clearfix pt-1 pb-3">
-      <div class="buttons is-pulled-right">
-        <%= likes_count(cheatsheet) %>
-        <%= add_or_remove_favorite(cheatsheet, styles: "pt-1 px-2") %>
-      </div>
+<div class="cheatsheet-card">
+  <div class="has-background-white-ter is-clearfix pt-1 pb-3">
+    <div class="buttons is-pulled-right">
+      <%= likes_count(cheatsheet) %>
+      <%= add_or_remove_favorite(cheatsheet, styles: "pt-1 px-2") %>
     </div>
-    <header>
-      <p class="card-header-title"><%= link_to truncate(cheatsheet.title, length: 50, separator: ' '), cheatsheet %></p>
-    </header>
-    <div class="card-content pt-0">
-      <div class="content">
-        <p class="my-0"><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
-        <p><small><strong>Created: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
+  </div>
+  <header>
+    <p class="card-header-title"><%= link_to truncate(cheatsheet.title, length: 50, separator: ' '), cheatsheet %></p>
+  </header>
+  <div class="card-content pt-0">
+    <div class="content">
+      <p class="my-0"><small><strong>Author:</strong> <%= link_to cheatsheet.user.username, cheatsheet.user %></small></p>
+      <p><small><strong>Created: </strong><%= cheatsheet.created_at.strftime("%B %d, %Y") %></small></p>
 
-        <div>
-          <% cheatsheet.tags.map do |tag| %>
-            <%= change_hashtag_to_link(tag.name, style="tag") %>
-          <% end %>
-        </div>
+      <div>
+        <% cheatsheet.tags.map do |tag| %>
+          <%= change_hashtag_to_link(tag.name, style="tag") %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
+
