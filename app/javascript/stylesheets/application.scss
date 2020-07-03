@@ -73,3 +73,12 @@ div.field_with_errors {
     color: hsl(0, 0%, 48%);
   }
 }
+
+.bookmark_empty {
+  color: hsl(0, 0%, 48%);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: hsl(348, 100%, 61%);
+  }
+}

@@ -10,7 +10,7 @@ module FavoritesHelper
         end
       else
         link_to favorites_path(cheatsheet_id: cheatsheet), method: :post, class: styles do
-          content_tag(:span, icon_bookmark_empty, class: "icon is-small has-text-grey")
+          content_tag(:span, icon_bookmark_empty, class: "bookmark_empty icon is-small")
         end
       end
     end
