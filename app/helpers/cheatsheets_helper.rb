@@ -34,7 +34,7 @@ module CheatsheetsHelper
 
   def likes_count(cheatsheet)
     likes_count = cheatsheet.likers.count
-    counter = content_tag(:span, likes_count, class: "has-text-grey mr-2")
+    counter = content_tag(:span, likes_count, class: "has-text-grey mr-2", style: "cursor: default")
 
     icon_heart_filled = content_tag(:i, '', class: "fas fa-heart")
     icon_heart_empty = content_tag(:i, '', class: "far fa-heart")
