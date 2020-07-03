@@ -1,5 +1,5 @@
 module FavoritesHelper
-  def add_or_remove_favorite(cheatsheet, styles: "")
+  def add_or_remove_favorite(cheatsheet, styles: "", bookmark_style: "has-text-grey")
     icon_bookmark_filled = content_tag(:i, '', class: "fas fa-bookmark")
     icon_bookmark_empty = content_tag(:i, '', class: "far fa-bookmark")
 
@@ -10,7 +10,7 @@ module FavoritesHelper
         end
       else
         link_to favorites_path(cheatsheet_id: cheatsheet), method: :post, class: styles do
-          content_tag(:span, icon_bookmark_empty, class: "bookmark_empty icon is-small")
+          content_tag(:span, icon_bookmark_empty, class: "#{bookmark_style} icon is-small")
         end
       end
     end
