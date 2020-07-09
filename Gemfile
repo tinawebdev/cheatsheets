@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
-gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
@@ -17,8 +16,13 @@ gem 'friendly_id', '~> 5.3'
 gem 'image_processing', '~> 1.2'
 gem 'ransack'
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :development do
