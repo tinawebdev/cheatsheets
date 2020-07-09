@@ -8,7 +8,7 @@
         <%= like_or_unlike_button(@cheatsheet, @like) %>
         <%= add_or_remove_favorite(@cheatsheet, styles: "button is-dark is-small") %>
         
-        <% if current_user_can_edit?(@cheatsheet) %>
+        <% if current_user_can_edit?(@cheatsheet) || current_user_admin? %>
           <%= link_to edit_cheatsheet_path(@cheatsheet) do %>
             <button class="button is-dark is-small mr-2">
               <span class="icon is-small">
