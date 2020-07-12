@@ -82,3 +82,9 @@ div.field_with_errors {
     color: hsl(348, 100%, 61%);
   }
 }
+
+@media screen and (max-width: 576px) {
+  .cheatsheet-card {
+    width: 275px;
+  }
+}
