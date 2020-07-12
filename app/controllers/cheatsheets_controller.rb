@@ -53,7 +53,15 @@ class CheatsheetsController < ApplicationController
   end
 
   def set_current_user
-    @cheatsheet = current_user.cheatsheets.friendly.find(params[:id])
+    if current_user.admin?
+      @cheatsheet = Cheatsheet.friendly.find(params[:id])
+    else
+      begin
+        @cheatsheet = current_user.cheatsheets.friendly.find(params[:id])
+      rescue
+        redirect_to cheatsheets_url, notice: "Access denied!"
+      end
+    end
   end
 
   def private_cheatsheet_guard!
