@@ -42,12 +42,9 @@
 
           <div class="navbar-dropdown">
             <%= link_to "My Profile", current_user, class: "navbar-item" %>
+            <hr class="navbar-divider">
             <%= link_to "Edit Profile", edit_user_path(current_user), class: "navbar-item" %>
             <%= link_to "Change password", edit_user_registration_path(current_user), class: "navbar-item" %>
-            <hr class="navbar-divider">
-            <a class="navbar-item">
-              Help
-            </a>
           </div>
         </div>
       <% end %>
