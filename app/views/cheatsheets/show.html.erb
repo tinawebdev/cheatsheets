@@ -55,8 +55,12 @@
   </div>
 </section>
 
-<section class="section content_min-height has-background-white">
-  <div class="container text-content">
-    <%= @cheatsheet.content %>
+<section class="colums section">
+  <div class="column is-10 is-vcentered container content text-content has-background-white">
+    <% if @cheatsheet.body.present? %>
+      <%= @cheatsheet.body.html_safe %>
+    <% else %>
+      <h1 class="title has-text-grey-light has-text-centered">Content does not exist :(</h1>
+    <% end %>
   </div>
 </section>

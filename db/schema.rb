@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_05_162201) do
+ActiveRecord::Schema.define(version: 2020_07_14_081127) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_07_05_162201) do
     t.boolean "public", default: true
     t.string "slug"
     t.string "hashtags"
+    t.text "body"
     t.index ["slug"], name: "index_cheatsheets_on_slug", unique: true
     t.index ["user_id"], name: "index_cheatsheets_on_user_id"
   end

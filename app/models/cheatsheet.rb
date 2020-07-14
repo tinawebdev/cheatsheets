@@ -10,10 +10,8 @@ class Cheatsheet < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :likers, through: :likes, source: :user
 
-  has_rich_text :content
-
   validates :title, presence: true, length: { maximum: 255 }
-  validates :content, presence: true, length: {maximum: 20000}
+  validates :body, presence: true
   validates :hashtags, length: { maximum: 65 }
 
   after_save :create_hashtags
